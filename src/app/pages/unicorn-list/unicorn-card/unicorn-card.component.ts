@@ -1,8 +1,11 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Unicorn} from '../../../shared/models/unicorn.model';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {EditUnicornDialogComponent} from './dialogs/edit-unicorn/edit-unicorn.dialog.component';
 import {CartService} from '../../../shared/services/cart.service';
+import {UnicornsService} from '../../../shared/services/unicorns.service';
+import {catchError, tap} from 'rxjs/operators';
+import {EMPTY} from 'rxjs';
 
 @Component({
     selector: 'uni-unicorn-card',
@@ -12,7 +15,9 @@ import {CartService} from '../../../shared/services/cart.service';
 export class UnicornCardComponent {
 
     constructor(public dialog: MatDialog,
-                private cartService: CartService) {
+                private cartService: CartService,
+                private unicornsService: UnicornsService,
+                private snackBar: MatSnackBar) {
     }
 
     @Output()
@@ -24,7 +29,16 @@ export class UnicornCardComponent {
     public isInCart = false;
 
     public deleteUnicorn() {
-        this.deleted.emit();
+        this.unicornsService.deleteUnicorn(this.unicorn).pipe(
+            tap(() => {
+                this.snackBar.open(`${this.unicorn.name} a été supprimé !`);
+                this.deleted.emit();
+            }),
+            catchError((error: any) => {
+                this.snackBar.open(`ERREUR lors de la suppression de ${this.unicorn.name} !`);
+                return EMPTY;
+            })
+        ).subscribe();
     }
 
     public openEditDialog() {

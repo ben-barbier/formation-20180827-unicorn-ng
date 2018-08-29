@@ -2,20 +2,23 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { UnicornListComponent } from './pages/unicorn-list/unicorn-list.component';
-import { UnicornCardComponent } from './pages/unicorn-list/unicorn-card/unicorn-card.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UnicornListComponent} from './pages/unicorn-list/unicorn-list.component';
+import {UnicornCardComponent} from './pages/unicorn-list/unicorn-card/unicorn-card.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatIconModule, MatStepperModule, MatTableModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTableModule,
     MatToolbarModule
 } from '@angular/material';
-import { MagicalNamePipe } from './shared/pipes/magical-name.pipe';
-import { EditUnicornDialogComponent } from './pages/unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.dialog.component';
+import {MagicalNamePipe} from './shared/pipes/magical-name.pipe';
+import {EditUnicornDialogComponent} from './pages/unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.dialog.component';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -38,6 +41,7 @@ import {HttpClientModule} from '@angular/common/http';
         MatBadgeModule,
         MatStepperModule,
         MatTableModule,
+        MatSnackBarModule,
         BrowserAnimationsModule,
         HttpClientModule,
     ],

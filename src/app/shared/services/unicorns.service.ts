@@ -23,7 +23,6 @@ export class UnicornsService {
     }
 
     public getAverageAge(): Observable<number> {
-
         return this.http.get<Unicorn[]>('http://localhost:3000/unicorns').pipe(
             flatMap(e => e),
             pluck('birthyear'),
@@ -33,6 +32,10 @@ export class UnicornsService {
             }, {count: 0, sum: 0}),
             map((ageCounter): number => ageCounter.count ? ageCounter.sum / ageCounter.count : 0)
         );
+    }
+
+    public deleteUnicorn(unicorn: Unicorn): Observable<any> {
+        return this.http.delete(`http://localhost:3000/unicorns/${unicorn.id}`);
     }
 
 }
