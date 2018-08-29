@@ -1,0 +1,10 @@
+:host {
+    border: 1px solid deepskyblue;
+    padding: 20px;
+    margin: 10px;
+    max-width: 250px;
+}
+
+img {
+    width: 200px;
+}
