@@ -6,6 +6,7 @@ import {UnicornListComponent} from './pages/unicorn-list/unicorn-list.component'
 import {UnicornCardComponent} from './pages/unicorn-list/unicorn-card/unicorn-card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+    MAT_SNACK_BAR_DEFAULT_OPTIONS,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -20,6 +21,7 @@ import {
 import {MagicalNamePipe} from './shared/pipes/magical-name.pipe';
 import {EditUnicornDialogComponent} from './pages/unicorn-list/unicorn-card/dialogs/edit-unicorn/edit-unicorn.dialog.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UnicornPhotoComponent } from './pages/unicorn-photo/unicorn-photo.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import {HttpClientModule} from '@angular/common/http';
         UnicornCardComponent,
         MagicalNamePipe,
         EditUnicornDialogComponent,
+        UnicornPhotoComponent,
     ],
     imports: [
         BrowserModule,
@@ -45,7 +48,9 @@ import {HttpClientModule} from '@angular/common/http';
         BrowserAnimationsModule,
         HttpClientModule,
     ],
-    providers: [],
+    providers: [
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    ],
     bootstrap: [AppComponent],
     entryComponents: [
         EditUnicornDialogComponent

@@ -38,4 +38,7 @@ export class UnicornsService {
         return this.http.delete(`http://localhost:3000/unicorns/${unicorn.id}`);
     }
 
+    public getUnicorn(id: number): Observable<Unicorn> {
+        return this.http.get<Unicorn>(`http://localhost:3000/unicorns/${id}`);
+    }
 }

@@ -2,7 +2,7 @@
 <div>name: {{unicorn.name | magicalName}}</div>
 <div>birthyear: {{unicorn.birthyear}}</div>
 <div>weight: {{unicorn.weight}}</div>
-<div><img [src]="unicorn.photo"/></div>
+<div><img [routerLink]="['unicorn-photo', unicorn.id]" [src]="unicorn.photo"/></div>
 <div>hobbies: {{unicorn.hobbies}}</div>
 <div>capacities: {{unicorn.capacities}}</div>
 
