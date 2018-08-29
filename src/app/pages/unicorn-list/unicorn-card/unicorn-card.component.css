@@ -8,3 +8,11 @@
 img {
     width: 200px;
 }
+
+.isSelected {
+    color: deeppink;
+}
+
+.isUnselected {
+    color: deepskyblue;
+}

@@ -35,7 +35,7 @@ export class UnicornCardComponent {
         });
     }
 
-    public addToCart() {
+    public addOrRemoveFromCart() {
         if (this.isInCart) {
             this.cartService.removeFromCart(this.unicorn);
         } else {

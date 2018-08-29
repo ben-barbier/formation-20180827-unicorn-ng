@@ -8,4 +8,4 @@
 
 <button mat-raised-button color="warn" (click)="deleteUnicorn()">Supprimer</button>
 <button mat-fab color="primary" (click)="openEditDialog()"><mat-icon>edit</mat-icon></button>
-<button mat-fab color="secondary" (click)="addToCart()"><mat-icon>favorite</mat-icon></button>
+<button mat-fab color="secondary" (click)="addOrRemoveFromCart()" [ngClass]="{'isSelected': isInCart, 'isUnselected': !isInCart}"><mat-icon>favorite</mat-icon></button>
