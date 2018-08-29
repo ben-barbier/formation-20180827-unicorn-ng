@@ -1,12 +1,18 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {UnicornListComponent} from './pages/unicorn-list/unicorn-list.component';
 import {UnicornPhotoComponent} from './pages/unicorn-photo/unicorn-photo.component';
 import {UnicornPairGuard} from './shared/guards/unicorn-pair.guard';
+import {UnicornResolver} from './shared/resolvers/unicorn.resolver';
 
 const routes: Routes = [
     {path: '', component: UnicornListComponent},
-    {path: 'unicorn-photo/:id', component: UnicornPhotoComponent, canActivate: [UnicornPairGuard]},
+    {
+        path: 'unicorn-photo/:id',
+        component: UnicornPhotoComponent,
+        canActivate: [UnicornPairGuard],
+        resolve: {unicorn: UnicornResolver}
+    },
     {path: '**', redirectTo: ''},
 ];
 

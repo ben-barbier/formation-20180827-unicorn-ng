@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Unicorn} from '../../shared/models/unicorn.model';
-import {ActivatedRoute, Params} from '@angular/router';
-import {UnicornsService} from '../../shared/services/unicorns.service';
-import {Observable} from 'rxjs';
+import {ActivatedRoute, Data} from '@angular/router';
 
 @Component({
     selector: 'uni-unicorn-photo',
@@ -11,12 +9,11 @@ import {Observable} from 'rxjs';
 })
 export class UnicornPhotoComponent {
 
-    public unicorn: Observable<Unicorn>;
+    public unicorn: Unicorn;
 
-    constructor(route: ActivatedRoute,
-                unicornsService: UnicornsService) {
-        route.params.subscribe((param: Params) => {
-            this.unicorn = unicornsService.getUnicorn(param.id);
+    constructor(private route: ActivatedRoute) {
+        route.data.subscribe((data: Data) => {
+            this.unicorn = data.unicorn;
         });
     }
 
